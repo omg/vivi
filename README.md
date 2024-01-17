@@ -17,5 +17,5 @@ If you want to take initiative (which is extremely helpful!), you can follow the
 1. Fork the repository.
 2. Create a new branch for your changes.
 3. **DO NOT MAKE CHANGES TO THE DICTIONARY ITSELF!!!**
-3. Make your modifications in the `changes` folder - either `additions.txt` or `removals.txt`.
+3. Make your modifications in the `changes` folder by adding a `.diff` file. See how to do it by reading the `example.diff` in the main directory.
 4. Submit a pull request.
