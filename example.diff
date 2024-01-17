@@ -1,0 +1,20 @@
+# Use comments to explain your changes.
+# Or use comments to create sections.
+
++ ADD A WORD LIKE THIS
++ ADD ANOTHER WORD
++ USE CAPITAL LETTERS
+- REMOVE WORDS LIKE THIS
+- REMOVE ANOTHER
+- AND ANOTHER!
+
+# You can make comments anywhere
+
+- AND MAKE REMOVALS
++ AND ADDITIONS
+- IN ANY ORDER
+
+# Make a new .diff file in this directory for the changes you want to make!
+# Use a format that is likely to be unique, like your name followed by a number:
+
+# sleuth-1.diff
