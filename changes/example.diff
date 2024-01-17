@@ -1,0 +1,13 @@
++ ADD A WORD LIKE THIS
++ ADD ANOTHER WORD
++ USE CAPITAL LETTERS
+- REMOVE WORDS LIKE THIS
+- REMOVE ANOTHER
+- AND ANOTHER!
+
+# Make a new .diff file in this directory for the change you want to make.
+# Make the file name relevant to the change you're making.
+
+# name-your-file-like-this.diff
+
+# You can make as many .diff files as you'd like.
