@@ -18,5 +18,5 @@ If you want to take initiative (which is extremely helpful!), you can follow the
 2. Create a new branch for your changes.
 3. **DO NOT MAKE CHANGES TO THE DICTIONARY ITSELF!!!**
 3. Make your modifications on your new branch in the `changes` folder by adding a `.diff` file. See how to do it by reading the `example.diff` in the main directory.
-4. Go back to `omg-community/vivi` and submit a pull request. This will create a request to pull your changes from the branch
+4. Go back to `omg/vivi` and submit a pull request. This will create a request to pull your changes from the branch
 that you created into Vivi's master branch.
