@@ -71,8 +71,6 @@ def get_diff_issues(diff_text):
         # Check for leading and trailing empty lines
         if lines[0] == "":
             issues.append(f"{bcolors.WARNING}[warning] Leading empty lines detected.{bcolors.ENDC}")
-        if lines[-1] == "":
-            issues.append(f"{bcolors.WARNING}[warning] Trailing empty lines detected.{bcolors.ENDC}")
     
     return issues
 
