@@ -74,12 +74,18 @@ def get_diff_issues(diff_text):
     
     return issues
 
-# Find all .diff files in the repository
-diff_files = glob.glob('changes/*.diff', recursive=True)
+# Find all files in the changes directory, don't check the extension.
+diff_files = glob.glob("changes/*")
 
 # Check each file
 has_issues = False
 for file_path in diff_files:
+    # Check if this is a diff file
+    if not file_path.endswith(".diff"):
+        has_issues = True
+        print(f"{bcolors.BOLD}{bcolors.FAIL}[failure]{bcolors.ENDC}{bcolors.FAIL} Non-diff file found in the changes directory: {file_path}{bcolors.ENDC}")
+        continue
+    # Get issues in the diff file
     issues = get_diff_issues(open(file_path, 'r').read())
     if issues:
         has_issues = True
