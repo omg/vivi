@@ -26,6 +26,7 @@ def get_diff_issues(diff_text):
     lines = diff_text.split('\n')
     previous_line_empty = False
     has_content = False
+    content_lines = []
     issues = []
 
     for line_number, line in enumerate(lines, start=1):
@@ -41,10 +42,14 @@ def get_diff_issues(diff_text):
             content = line[1:].strip().upper()  # Retrieve the content, stripping leading and trailing spaces and converting to uppercase
             if content:
                 expected_line = line[0] + " " + content  # Create a properly formatted added/removed line
+                if not content in content_lines:
+                    content_lines.append(content)
+                else:
+                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Duplicate content detected.{bcolors.ENDC}")
                 previous_line_empty = False
                 has_content = True
                 if expected_line != line:
-                    issues.append(f"{bcolors.WARNING}[warning] Invalid line on line {line_number}. Invalid formatting.\nActual: [{line}]\nExpected: [{expected_line}]{bcolors.ENDC}")
+                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Invalid formatting.\nActual: [{line}]\nExpected: [{expected_line}]{bcolors.ENDC}")
             else:
                 issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. No content after {line[0]}.{bcolors.ENDC}")
         elif line.strip() == "":
