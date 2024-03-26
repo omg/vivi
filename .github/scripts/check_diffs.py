@@ -49,7 +49,7 @@ def get_diff_issues(diff_text):
                 previous_line_empty = False
                 has_content = True
                 if expected_line != line:
-                    issues.append(f"{bcolors.WARNING}[warning] Invalid line on line {line_number}. Invalid formatting.\nActual: [{line}]\nExpected: [{expected_line}]{bcolors.ENDC}")
+                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Invalid formatting.\nActual: [{line}]\nExpected: [{expected_line}]{bcolors.ENDC}")
             else:
                 issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. No content after {line[0]}.{bcolors.ENDC}")
         elif line.strip() == "":
