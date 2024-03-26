@@ -42,8 +42,8 @@ def get_diff_issues(diff_text):
             content = line[1:].strip().upper()  # Retrieve the content, stripping leading and trailing spaces and converting to uppercase
             if content:
                 expected_line = line[0] + " " + content  # Create a properly formatted added/removed line
-                if not expected_line in content_lines:
-                    content_lines.append(expected_line)
+                if not content in content_lines:
+                    content_lines.append(content)
                 else:
                     issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Duplicate content detected.{bcolors.ENDC}")
                 previous_line_empty = False
