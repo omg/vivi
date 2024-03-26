@@ -36,7 +36,7 @@ def get_diff_issues(diff_text):
             expected_line = "#" + " " + comment_text  # Create a properly formatted comment line
             previous_line_empty = False
             if expected_line != line:
-                issues.append(f"{bcolors.WARNING}[warning] Invalid line on line {line_number}. Leading or trailing whitespace.\nActual: [{line}]\nExpected: [{expected_line}]{bcolors.ENDC}")
+                issues.append(f"{bcolors.WARNING}[warning] Invalid line on line {line_number}. Invalid formatting.\nActual:\t[{line}]\nExpected:\t[{expected_line}]{bcolors.ENDC}")
         elif line.startswith(("+", "-")):
             # Added/removed lines
             content = line[1:].strip().upper()  # Retrieve the content, stripping leading and trailing spaces and converting to uppercase
@@ -45,11 +45,11 @@ def get_diff_issues(diff_text):
                 if not content in content_lines:
                     content_lines.append(content)
                 else:
-                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Duplicate content detected.{bcolors.ENDC}")
+                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Duplicate content detected: {content}.{bcolors.ENDC}")
                 previous_line_empty = False
                 has_content = True
                 if expected_line != line:
-                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Invalid formatting.\nActual: [{line}]\nExpected: [{expected_line}]{bcolors.ENDC}")
+                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Invalid formatting.\nActual:\t[{line}]\nExpected:\t[{expected_line}]{bcolors.ENDC}")
             else:
                 issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. No content after {line[0]}.{bcolors.ENDC}")
         elif line.strip() == "":
@@ -74,12 +74,18 @@ def get_diff_issues(diff_text):
     
     return issues
 
-# Find all .diff files in the repository
-diff_files = glob.glob('changes/*.diff', recursive=True)
+# Find all files in the changes directory, don't check the extension.
+diff_files = glob.glob("changes/*")
 
 # Check each file
 has_issues = False
 for file_path in diff_files:
+    # Check if this is a diff file
+    if not file_path.endswith(".diff"):
+        has_issues = True
+        print(f"{bcolors.BOLD}{bcolors.FAIL}[failure]{bcolors.ENDC}{bcolors.FAIL} Non-diff file found in the changes directory: {file_path}{bcolors.ENDC}")
+        continue
+    # Get issues in the diff file
     issues = get_diff_issues(open(file_path, 'r').read())
     if issues:
         has_issues = True
