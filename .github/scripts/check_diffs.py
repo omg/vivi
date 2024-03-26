@@ -45,7 +45,7 @@ def get_diff_issues(diff_text):
                 if not content in content_lines:
                     content_lines.append(content)
                 else:
-                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Duplicate content detected.{bcolors.ENDC}")
+                    issues.append(f"{bcolors.FAIL}[error] Invalid line on line {line_number}. Duplicate content detected: {content}.{bcolors.ENDC}")
                 previous_line_empty = False
                 has_content = True
                 if expected_line != line:
