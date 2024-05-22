@@ -1,0 +1,29 @@
+name: Push changes on release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update_word_list:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Run script to apply changes
+      run: |
+        python .github/scripts/apply_changes.py
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add dictionaries/word-lists/vivi/english.txt
+        git commit -m "Update word list based on new release"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
