@@ -166,7 +166,7 @@ async def new_pull(title: str, id: str, desc: str, author: discord.User, data: s
 
     # Create the diff file
     head_repo.create_file(
-        path=f"changes/{id}.diff",
+        path=f"proposals/{id}.diff",
         message="Create .diff",
         content=data,
         branch=id
@@ -195,7 +195,7 @@ async def new_pull(title: str, id: str, desc: str, author: discord.User, data: s
 
 async def edit_pull(proposal: str, data: str, inter: discord.Interaction):
     # Retrieve the diff file
-    file = head_repo.get_contents(f"changes/{proposal}.diff", ref=proposal)
+    file = head_repo.get_contents(f"proposals/{proposal}.diff", ref=proposal)
 
     # Update the diff file
     head_repo.update_file(
