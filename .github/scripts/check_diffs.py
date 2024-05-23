@@ -74,8 +74,8 @@ def get_diff_issues(diff_text):
     
   return issues
 
-# Find all files in the changes directory, don't check the extension.
-diff_files = glob.glob("changes/*")
+# Find all files in the proposals directory, don't check the extension.
+diff_files = glob.glob("proposals/*")
 
 # Check each file
 has_issues = False
@@ -83,7 +83,7 @@ for file_path in diff_files:
   # Check if this is a diff file
   if not file_path.endswith(".diff"):
     has_issues = True
-    print(f"{bcolors.BOLD}{bcolors.FAIL}[failure]{bcolors.ENDC}{bcolors.FAIL} Non-diff file found in the changes directory: {file_path}{bcolors.ENDC}")
+    print(f"{bcolors.BOLD}{bcolors.FAIL}[failure]{bcolors.ENDC}{bcolors.FAIL} Non-diff file found in the proposals directory: {file_path}{bcolors.ENDC}")
     continue
   # Get issues in the diff file
   issues = get_diff_issues(open(file_path, 'r').read())
