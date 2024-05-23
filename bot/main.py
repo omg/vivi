@@ -11,7 +11,7 @@ from validate_diff import validate_diff
 
 load_dotenv()
 
-server_id = os.getenv("SERVER_ID")
+guild_id = os.getenv("GUILD_ID")
 token = os.getenv("DISCORD_TOKEN")
 ghtoken = os.getenv("GITHUB_TOKEN")
 
@@ -28,7 +28,7 @@ head_repo = gh_api.get_repo(f"{head_repo_author}/{repo_name}")
 
 # Set up the Discord bot
 
-DISCORD_SERVER = discord.Object(id = int(server_id))
+GUILD = discord.Object(id = int(guild_id))
 
 intents = discord.Intents.default()
 intents.members = True
@@ -43,7 +43,7 @@ class BotClient(discord.Client):
         await self.wait_until_ready()
         if not self.sync:
             self.sync = True
-            await self.tree.sync(guild=DISCORD_SERVER)
+            await self.tree.sync(guild=GUILD)
         print("Bot ready, listening for commands!")
 
 client = BotClient()
@@ -87,7 +87,7 @@ TITLE_FILTER = r"""[^ a-zA-Z0-9,.!?'":;\(\)\[\]-]"""
 DESC_FILTER = r"""[^ a-zA-Z0-9,.!?'":;\(\)\[\]\$\%\&\+\=\|-]"""
 # Commands
 
-proposalGroup = app_commands.Group(name="proposal", description="Make a proposal", guild_ids=[DISCORD_SERVER])
+proposalGroup = app_commands.Group(name="proposal", description="Make a proposal", guild_ids=[GUILD])
 
 @proposalGroup.command(name="create", description="Create a new proposal")
 async def propose_changes(inter: discord.Interaction, diff: discord.Attachment, title: Optional[str], description: Optional[str]):
@@ -147,7 +147,7 @@ async def proposal_auto(inter: discord.Interaction, current: str):
         ret.append(app_commands.Choice(name=f"{prop.title} #{prop.number}", value=prop.head.ref))
     return ret[:25]
 
-client.tree.add_command(proposalGroup, guild=DISCORD_SERVER)
+client.tree.add_command(proposalGroup, guild=GUILD)
 
 # Functions
 
