@@ -5,7 +5,7 @@ from discord import app_commands
 from datetime import datetime, timedelta
 from task_queue import TaskQueue
 from typing import Optional
-from validate_diff import validate_diff
+from validate_diff import process_diff
 
 # Load environment variables
 
@@ -95,7 +95,7 @@ async def propose_changes(inter: discord.Interaction, diff: discord.Attachment, 
         await inter.response.send_message("Your account is too young, come back later", ephemeral=True)
         return
     
-    valid, data = validate_diff((await diff.read()).decode("utf-8")) #Validate .diff
+    valid, data = process_diff((await diff.read()).decode("utf-8")) #Validate .diff
 
     if not valid:
         await inter.response.send_message(data, ephemeral=True)
@@ -123,7 +123,7 @@ async def edit_proposal(inter: discord.Interaction, proposal: str, diff: discord
     if not is_older_than(inter.user.created_at, 259_200): # 3 days
         await inter.response.send_message("Your account is too young, come back later", ephemeral=True)
         return
-    valid, data = validate_diff((await diff.read()).decode("utf-8")) #Validate .diff
+    valid, data = process_diff((await diff.read()).decode("utf-8")) #Validate .diff
 
     if not valid:
         await inter.response.send_message(data, ephemeral=True)

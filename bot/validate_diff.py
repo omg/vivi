@@ -1,19 +1,19 @@
-def validate_diff(diff_text):
+def process_diff(diff_content):
     """
-    Validates and attempts to automatically fix diff file text. Ensures lines start with #, +, or -.
-    Automatically fixes formatting issues and whitespace problems.
+    Processes a diff by validating and automatically correcting its content.
+    
+    Ensures lines start with #, +, or -, and corrects formatting and whitespace issues.
     
     Parameters:
-    - diff_text: A string representing the contents of a diff file.
+    - diff_content: The content of the diff.
     
     Returns:
-    - A tuple (is_valid, result) where is_valid is a boolean indicating if the file could be
-      fixed or if it's valid, and result is either the fixed valid diff text or an error message.
+    - A tuple (processed, result) where processed is a boolean indicating whether the content could be processed.
+      The result will either be the new diff content, or an error message if the content could not be processed.
     """
-
-    fixed_lines = []
+    corrected_lines = []
     content_lines = []
-    lines = diff_text.split('\n')
+    lines = diff_content.split('\n')
     previous_line_empty = False
     
     for line_number, line in enumerate(lines, start=1):
@@ -21,7 +21,7 @@ def validate_diff(diff_text):
             # Comments
             comment_text = line[1:].strip()  # Retrieve the comment text, stripping leading and trailing spaces
             fixed_line = "#" + " " + comment_text  # Create a properly formatted comment line
-            fixed_lines.append(fixed_line)
+            corrected_lines.append(fixed_line)
             previous_line_empty = False
         elif line.startswith(("+", "-")):
             # Added/removed lines
@@ -29,8 +29,13 @@ def validate_diff(diff_text):
             if content:
                 fixed_line = line[0] + " " + content  # Create a properly formatted added/removed line
                 if content in content_lines:
+                    # This is decided to be an error REGARDLESS of if both lines are additions, or both lines are removals.
+                    # You could technically automatically remove the duplicate line, but that could lead to unintended readability changes.
+                    # Maybe there was an important comment above the duplicate line that could provide context to the change.
+                    # It could also have been grouped with other similar changes, etc.
+                    # It's better to let the user decide how to handle the duplicate line.
                     return (False, f"Invalid line on line {line_number}. Duplicate content detected: {content}.")
-                fixed_lines.append(fixed_line)
+                corrected_lines.append(fixed_line)
                 content_lines.append(content)
                 previous_line_empty = False
             else:
@@ -39,18 +44,18 @@ def validate_diff(diff_text):
             # Empty lines
             if not previous_line_empty:
                 # Create a single empty line if the last line was not empty
-                fixed_lines.append("")
+                corrected_lines.append("")
                 previous_line_empty = True
         else:
             # Invalid character
             return (False, f"Invalid line on line {line_number}. Must start with +, -, or #.")
 
     # Trim leading and trailing empty lines
-    while fixed_lines and fixed_lines[0] == "":
-        fixed_lines.pop(0)
-    while fixed_lines and fixed_lines[-1] == "":
-        fixed_lines.pop()
+    while corrected_lines and corrected_lines[0] == "":
+        corrected_lines.pop(0)
+    while corrected_lines and corrected_lines[-1] == "":
+        corrected_lines.pop()
 
     # Join the fixed lines back into a single string
-    fixed_text = '\n'.join(fixed_lines)
+    fixed_text = '\n'.join(corrected_lines)
     return (True, fixed_text)
