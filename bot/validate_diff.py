@@ -1,4 +1,6 @@
-def process_diff(diff_content):
+from typing import Tuple
+
+def process_diff(diff_content) -> Tuple[bool, str]:
     """
     Processes a diff by validating and automatically correcting its content.
     

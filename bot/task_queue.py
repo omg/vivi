@@ -1,6 +1,6 @@
 import threading
 import time
-from typing import Callable, Any
+from typing import Callable, Any, List, Tuple, Dict
 
 class TaskQueue:
     def __init__(self, task_delay: int):
@@ -12,17 +12,17 @@ class TaskQueue:
         self.task_delay = task_delay
         self.last_task_time = time.time() - self.task_delay  # Initialize to enable immediate first action
         self.lock = threading.Lock()
-        self.queue = []
+        self.queue: List[Tuple[Callable, List[Any], Dict[Any, Any]]] = []
         self.event = threading.Event()
         self.thread = threading.Thread(target=self._process_queue, daemon=True)
         self.thread.start()
 
-    def _get_initial_wait(self):
+    def _get_initial_wait(self) -> int:
         time_since_last_task = time.time() - self.last_task_time
         time_to_wait = max(self.task_delay - time_since_last_task, 0)
         return time_to_wait
     
-    def get_estimated_wait(self, ahead: int = 0):
+    def get_estimated_wait(self, ahead: int = 0) -> int:
         """
         Returns the estimated time in seconds until the last task in the queue will be executed.
         If `ahead` is specified, it returns the estimated time as if there were `ahead` more tasks in the queue.
