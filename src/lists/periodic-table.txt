@@ -1,0 +1,118 @@
+H,1,Nonmetal,HYDROGEN
+He,2,Noble Gas,HELIUM
+Li,3,Alkali Metal,LITHIUM
+Be,4,Alkaline Earth,BERYLLIUM,GLUCINUM,GLUCINIUM
+B,5,Metalloid,BORON
+C,6,Nonmetal,CARBON
+N,7,Nonmetal,NITROGEN,AZOTE
+O,8,Nonmetal,OXYGEN
+F,9,Halogen,FLUORINE
+Ne,10,Noble Gas,NEON
+Na,11,Alkali Metal,SODIUM,NATRIUM,NATRONIUM
+Mg,12,Alkaline Earth,MAGNESIUM
+Al,13,Post-Transition Metal,ALUMINUM,ALUMINIUM
+Si,14,Metalloid,SILICON,SILICIUM
+P,15,Nonmetal,PHOSPHORUS,PHOSPHOR,PHOSPHORUM
+S,16,Nonmetal,SULFUR,SULPHUR
+Cl,17,Halogen,CHLORINE
+Ar,18,Noble Gas,ARGON
+K,19,Alkali Metal,POTASSIUM,KALIUM
+Ca,20,Alkaline Earth,CALCIUM
+Sc,21,Transition Metal,SCANDIUM
+Ti,22,Transition Metal,TITANIUM,TITANEUM
+V,23,Transition Metal,VANADIUM
+Cr,24,Transition Metal,CHROMIUM
+Mn,25,Transition Metal,MANGANESE,MANGANUM
+Fe,26,Transition Metal,IRON,FERRUM
+Co,27,Transition Metal,COBALT
+Ni,28,Transition Metal,NICKEL
+Cu,29,Transition Metal,COPPER,CUPRUM
+Zn,30,Transition Metal,ZINC
+Ga,31,Post-Transition Metal,GALLIUM
+Ge,32,Metalloid,GERMANIUM
+As,33,Metalloid,ARSENIC
+Se,34,Nonmetal,SELENIUM
+Br,35,Halogen,BROMINE,MURIDE
+Kr,36,Noble Gas,KRYPTON
+Rb,37,Alkali Metal,RUBIDIUM
+Sr,38,Alkaline Earth,STRONTIUM
+Y,39,Transition Metal,YTTRIUM
+Zr,40,Transition Metal,ZIRCONIUM
+Nb,41,Transition Metal,NIOBIUM,COLUMBIUM
+Mo,42,Transition Metal,MOLYBDENUM
+Tc,43,Transition Metal,TECHNETIUM
+Ru,44,Transition Metal,RUTHENIUM
+Rh,45,Transition Metal,RHODIUM
+Pd,46,Transition Metal,PALLADIUM
+Ag,47,Transition Metal,SILVER,ARGENTUM,ARGYRUM
+Cd,48,Transition Metal,CADMIUM
+In,49,Post-Transition Metal,INDIUM
+Sn,50,Post-Transition Metal,TIN,STANNUM,STANUM
+Sb,51,Metalloid,ANTIMONY,STIBIUM
+Te,52,Metalloid,TELLURIUM
+I,53,Halogen,IODINE,JOD,JODIUM
+Xe,54,Noble Gas,XENON
+Cs,55,Alkali Metal,CESIUM,CAESIUM
+Ba,56,Alkaline Earth,BARIUM,BARYUM
+La,57,Lanthanide,LANTHANUM
+Ce,58,Lanthanide,CERIUM
+Pr,59,Lanthanide,PRASEODYMIUM
+Nd,60,Lanthanide,NEODYMIUM,NEODIMIUM
+Pm,61,Lanthanide,PROMETHIUM
+Sm,62,Lanthanide,SAMARIUM
+Eu,63,Lanthanide,EUROPIUM
+Gd,64,Lanthanide,GADOLINIUM
+Tb,65,Lanthanide,TERBIUM
+Dy,66,Lanthanide,DYSPROSIUM
+Ho,67,Lanthanide,HOLMIUM
+Er,68,Lanthanide,ERBIUM
+Tm,69,Lanthanide,THULIUM
+Yb,70,Lanthanide,YTTERBIUM
+Lu,71,Lanthanide,LUTETIUM
+Hf,72,Transition Metal,HAFNIUM
+Ta,73,Transition Metal,TANTALUM
+W,74,Transition Metal,TUNGSTEN,WOLFRAM,WOLFRAMIUM
+Re,75,Transition Metal,RHENIUM
+Os,76,Transition Metal,OSMIUM
+Ir,77,Transition Metal,IRIDIUM
+Pt,78,Transition Metal,PLATINUM
+Au,79,Transition Metal,GOLD,AURUM
+Hg,80,Transition Metal,MERCURY,HYDRARGYRUM
+Tl,81,Post-Transition Metal,THALLIUM
+Pb,82,Post-Transition Metal,LEAD,PLUMBUM
+Bi,83,Post-Transition Metal,BISMUTH
+Po,84,Metalloid,POLONIUM
+At,85,Halogen,ASTATINE
+Rn,86,Noble Gas,RADON
+Fr,87,Alkali Metal,FRANCIUM
+Ra,88,Alkaline Earth,RADIUM,RADONIUM
+Ac,89,Actinide,ACTINIUM
+Th,90,Actinide,THORIUM
+Pa,91,Actinide,PROTACTINIUM
+U,92,Actinide,URANIUM
+Np,93,Actinide,NEPTUNIUM
+Pu,94,Actinide,PLUTONIUM
+Am,95,Actinide,AMERICIUM
+Cm,96,Actinide,CURIUM
+Bk,97,Actinide,BERKELIUM
+Cf,98,Actinide,CALIFORNIUM
+Es,99,Actinide,EINSTEINIUM
+Fm,100,Actinide,FERMIUM
+Md,101,Actinide,MENDELEVIUM
+No,102,Actinide,NOBELIUM
+Lr,103,Actinide,LAWRENCIUM
+Rf,104,Transition Metal,RUTHERFORDIUM,KURTSCHATOVIUM
+Db,105,Transition Metal,DUBNIUM,HAHNIUM
+Sg,106,Transition Metal,SEABORGIUM
+Bh,107,Transition Metal,BOHRIUM
+Hs,108,Transition Metal,HASSIUM
+Mt,109,Transition Metal,MEITNERIUM
+Ds,110,Transition Metal,DARMSTADTIUM,UNUNNILIUM
+Rg,111,Transition Metal,ROENTGENIUM,UNUNUNIUM
+Cn,112,Transition Metal,COPERNICIUM,UNUNBIUM
+Nh,113,Post-Transition Metal,NIHONIUM,UNUNTRIUM
+Fl,114,Post-Transition Metal,FLEROVIUM,UNUNQUADIUM
+Mc,115,Post-Transition Metal,MOSCOVIUM,UNUNPENTIUM
+Lv,116,Post-Transition Metal,LIVERMORIUM,UNUNHEXIUM
+Ts,117,Halogen,TENNESSINE,UNUNSEPTIUM
+Og,118,Noble Gas,OGANESSON,UNUNOCTIUM
