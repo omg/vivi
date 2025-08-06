@@ -1,0 +1,31 @@
+{
+  "name": "vivi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omg/vivi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/omg/vivi/issues"
+  },
+  "homepage": "https://github.com/omg/vivi#readme",
+  "devDependencies": {
+    "@types/iconv-lite": "^0.0.1",
+    "@types/node": "^24.2.0",
+    "app-root-path": "^3.1.0",
+    "tsx": "^4.20.3"
+  },
+  "dependencies": {
+    "chardet": "^2.1.0",
+    "iconv-lite": "^0.6.3"
+  }
+}
