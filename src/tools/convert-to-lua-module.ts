@@ -19,12 +19,16 @@ if (!hasEnding) {
 path = appRootPath.resolve(`src/${path}`);
 
 const outputName = path.match(/[/\\]([^/\\]+)\..+$/)[1];
-const outputPath = appRootPath.resolve(`dist/${outputName}.lua`);
+const outputPath = appRootPath.resolve(`dist/${outputName}.luau`);
 const outputDir = dirname(outputPath);
 
 try {
   const text = (await readFile(path)).toString();
-  const result = `return [[\n${text}${text.endsWith("\n") ? "" : "\n"}]]`;
+  const dictionaryString = `[${text
+    .split(/(?:\r\n|\r|\n)/)
+    .join("][")
+    .replace(/"/, '\\"')}]`;
+  const result = `return "${dictionaryString}"`;
   await mkdir(outputDir, { recursive: true });
   await writeFile(outputPath, result);
   console.log(`Output result to ${outputPath}`);
