@@ -20,7 +20,17 @@ path = appRootPath.resolve(`src/${path}`);
 
 const outputName = path.match(/[/\\]([^/\\]+)\..+$/)[1];
 const outputPath = appRootPath.resolve(`dist/${outputName}.luau`);
+const outputTypePath = appRootPath.resolve(`dist/${outputName}.d.ts`);
 const outputDir = dirname(outputPath);
+
+function dashToPascalCase(input: string): string {
+  return input
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join("");
+}
+
+const outputPascalName = dashToPascalCase(outputName);
 
 try {
   const text = (await readFile(path)).toString();
@@ -28,9 +38,11 @@ try {
     .split(/(?:\r\n|\r|\n)/)
     .join("][")
     .replace(/"/, '\\"')}]`;
-  const result = `return "${dictionaryString}"`;
+  const result = `return "${dictionaryString}"\n`;
+  const typeResult = `declare const ${outputPascalName}: string;\nexport = ${outputPascalName};\n`;
   await mkdir(outputDir, { recursive: true });
   await writeFile(outputPath, result);
+  await writeFile(outputTypePath, typeResult);
   console.log(`Output result to ${outputPath}`);
 } catch (error) {
   console.error("Error writing conversion:", error);
